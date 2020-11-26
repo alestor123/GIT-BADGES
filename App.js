@@ -4,3 +4,4 @@ app = express(),
 axios = require('axios'),
 port = process.env.PORT || 3000;
 mongoose = require('mongoose');
+app.listen(port, () => console.log(`server running at ${port}`))
