@@ -2,10 +2,10 @@ require('dotenv').config()
 var express = require('express'),
 app = express(),
 axios = require('axios'),
-port = process.env.PORT || 3000, 
+port = process.env.PORT || process.argv[3] ||  3000, 
 Model = require('./model/model'),
 mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/ghviews', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+mongoose.connect(process.env.MONGO_URL || process.argv[3] || 'mongodb://localhost:27017/ghviews', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 app.get('/views/:user/:repo', async (req, res) => {
     var { user, repo } = req.params,
     flag = 1,
